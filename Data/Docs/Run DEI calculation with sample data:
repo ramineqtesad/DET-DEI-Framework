@@ -1,0 +1,3 @@
+python Code/dei_calculator.py Data/sample_indicators_urmia.csv \
+  --weights Docs/weights_default.json \
+  --out Tables/DEI_output_urmia.csv
