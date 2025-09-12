@@ -1,0 +1,39 @@
+"""
+Disturbed Equilibrium Index (DEI) Calculator
+Author: Ramin Gozarani Eghtesad
+License: MIT
+"""
+
+import pandas as pd
+import json
+import argparse
+
+def compute_dei(df, weights, kappa=1.0):
+    """Compute DEI from dataframe and weight dictionary."""
+    # Human Pressure (H)
+    H = sum(weights["H"].get(col, 0) * df[col].iloc[0] for col in df.columns if col in weights["H"])
+    # Exogenous Stress (A)
+    A = sum(weights["A"].get(col, 0) * df[col].iloc[0] for col in df.columns if col in weights["A"])
+    # Resilience (R)
+    R = sum(weights["R"].get(col, 0) * df[col].iloc[0] for col in df.columns if col in weights["R"])
+    if R == 0:
+        return None
+    DEI = (H + kappa * A) / R
+    return DEI
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Compute Disturbed Equilibrium Index (DEI).")
+    parser.add_argument("input_csv", help="CSV file with normalized indicators (0–1).")
+    parser.add_argument("--weights", required=True, help="JSON file with weights for H, A, R.")
+    parser.add_argument("--out", default="DEI_output.csv", help="Output CSV file.")
+    parser.add_argument("--kappa", type=float, default=1.0, help="Calibration factor κ.")
+    args = parser.parse_args()
+
+    df = pd.read_csv(args.input_csv)
+    with open(args.weights, "r") as f:
+        weights = json.load(f)
+
+    dei_value = compute_dei(df, weights, args.kappa)
+    out_df = pd.DataFrame({"DEI": [dei_value], "kappa": [args.kappa]})
+    out_df.to_csv(args.out, index=False)
+    print(f"DEI = {dei_value:.2f} (saved to {args.out})")
