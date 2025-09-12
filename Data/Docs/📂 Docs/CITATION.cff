@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Disturbed Equilibrium Theory (DET) & Disturbed Equilibrium Index (DEI)"
+authors:
+  - family-names: "Gozarani Eghtesad"
+    given-names: "Ramin"
+    orcid: "https://orcid.org/0009-0002-8667-8738"
+date-released: 2025-09-12
+doi: "10.5281/zenodo.xxxxx"   # replace after Zenodo DOI minted
+message: "If you use DET/DEI materials, please cite this repository and related publications."
