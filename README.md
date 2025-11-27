@@ -16,3 +16,8 @@ If you use this repository, please cite the article above and the DOI (via Zenod
 
 ## License
 Creative Commons Attribution (CC BY 4.0).
+## Reference
+This repository provides supplementary materials, figures, and computational codes supporting the preprint:
+**The Disturbed Equilibrium Theory (DET) and Index (DEI): A Predictive Framework for Ecosystem Collapse and Renewal**  
+DOI: [https://doi.org/10.21203/rs.3.rs-7802107/v1](https://doi.org/10.21203/rs.3.rs-7802107/v1)  
+Published on Research Square (Springer Nature In Review).
